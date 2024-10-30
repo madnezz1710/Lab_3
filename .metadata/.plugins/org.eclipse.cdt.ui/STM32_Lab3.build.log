@@ -1,23 +1,10 @@
-14:51:24 **** Incremental Build of configuration Debug for project STM32_Lab3 ****
+16:55:09 **** Incremental Build of configuration Debug for project STM32_Lab3 ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/traffic_light.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/traffic_light.d" -MT"Core/Src/traffic_light.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/traffic_light.o"
-arm-none-eabi-gcc -o "STM32_Lab3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\itzic\Desktop\baitapxaml\VXL\Git_Lab3\STM32_Lab3\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_Lab3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STM32_Lab3.elf
- 
 arm-none-eabi-size   STM32_Lab3.elf 
-arm-none-eabi-objdump -h -S  STM32_Lab3.elf  > "STM32_Lab3.list"
-arm-none-eabi-objcopy  -O ihex  STM32_Lab3.elf  "STM32_Lab3.hex"
    text	   data	    bss	    dec	    hex	filename
-   7608	     32	   1664	   9304	   2458	STM32_Lab3.elf
-arm-none-eabi-objcopy  -O binary  STM32_Lab3.elf  "STM32_Lab3.bin"
+  10532	     36	   1676	  12244	   2fd4	STM32_Lab3.elf
 Finished building: default.size.stdout
  
-Finished building: STM32_Lab3.hex
-Finished building: STM32_Lab3.bin
- 
- 
-Finished building: STM32_Lab3.list
- 
 
-14:51:24 Build Finished. 0 errors, 0 warnings. (took 631ms)
+16:55:09 Build Finished. 0 errors, 0 warnings. (took 157ms)
 

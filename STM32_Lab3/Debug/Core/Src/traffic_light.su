@@ -1,2 +1,2 @@
-traffic_light.c:19:6:fsm_trafficlight	8	static
-traffic_light.c:88:6:fsm_fullmode	4	static
+traffic_light.c:20:6:fsm_trafficlight	8	static
+traffic_light.c:179:6:fsm_fullmode	4	static

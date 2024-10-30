@@ -10,6 +10,7 @@
 
 extern int timer1_flag;
 extern int timer2_flag;
+extern int timer3_flag;
 
 
 void timer1Run();

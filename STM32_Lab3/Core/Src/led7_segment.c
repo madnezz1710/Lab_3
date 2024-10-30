@@ -6,6 +6,8 @@
  */
 #include "led7_segment.h"
 
+int LEDData;
+int SEGData;
 void display_SEG(int num){
 	switch (num) {
 		case 0:
@@ -238,6 +240,7 @@ void update7LED(int index, int data) {
 void segRun1() {
 	update7SEG(0, SEGData);
 	update7LED(0, LEDData);
+
 }
 
 void segRun2() {

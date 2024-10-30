@@ -1,0 +1,143 @@
+/*
+ * traffic_light.c
+ *
+ *  Created on: Oct 30, 2024
+ *      Author: itzic
+ */
+
+
+#include "traffic_light.h"
+
+int state = INIT;  // Định nghĩa và khởi tạo giá trị cho state
+int stage = MODE;
+int GREENTIME = 300;       // Thời gian cho đèn xanh (ms)
+int YELLOWTIME = 200;      // Thời gian cho đèn vàng (ms)
+int REDTIME = 500;         // Thời gian cho đèn đỏ (ms)
+int SEGData = 0;           // Biến đếm cho đèn đỏ hiển thị trên 7-segment
+int LEDData = 0;           // Biến đếm cho đèn xanh hoặc vàng hiển thị trên 7-segment
+
+
+void fsm_trafficlight() {
+	switch (state) {
+		case INIT:
+			HAL_GPIO_WritePin(RED_1_GPIO_Port, RED_1_Pin, 0);
+			HAL_GPIO_WritePin(GREEN_1_GPIO_Port, GREEN_1_Pin, 0);
+			HAL_GPIO_WritePin(YELLOW_1_GPIO_Port, YELLOW_1_Pin, 0);
+			HAL_GPIO_WritePin(RED_2_GPIO_Port, RED_2_Pin, 0);
+			HAL_GPIO_WritePin(GREEN_2_GPIO_Port, GREEN_2_Pin, 0);
+			HAL_GPIO_WritePin(YELLOW_2_GPIO_Port, YELLOW_2_Pin, 0);
+			if(timer1_flag == 1){
+				setTimer1(100);
+				state = AUTORED_GREEN;
+				SEGData = REDTIME / 100;   // Khởi tạo giá trị đếm ngược đèn đỏ
+				LEDData = GREENTIME / 100; // Khởi tạo giá trị đếm ngược đèn xanh
+				setTimer2(100);            // Bắt đầu timer 2 cho 7-segment
+			}
+			break;
+
+		case AUTORED_GREEN:
+			HAL_GPIO_WritePin(RED_1_GPIO_Port, RED_1_Pin, 1);
+			HAL_GPIO_WritePin(GREEN_1_GPIO_Port, GREEN_1_Pin, 0);
+			HAL_GPIO_WritePin(YELLOW_1_GPIO_Port, YELLOW_1_Pin, 0);
+			HAL_GPIO_WritePin(RED_2_GPIO_Port, RED_2_Pin, 0);
+			HAL_GPIO_WritePin(GREEN_2_GPIO_Port, GREEN_2_Pin, 1);
+			HAL_GPIO_WritePin(YELLOW_2_GPIO_Port, YELLOW_2_Pin, 0);
+			if(timer1_flag == 1){
+				setTimer1(GREENTIME);
+				state = AUTORED_YELLOW;
+				SEGData = REDTIME / 100;   // Cài lại giá trị cho đèn đỏ
+				LEDData = YELLOWTIME / 100; // Cài lại giá trị cho đèn vàng
+			}
+			if(timer2_flag == 1){
+				segRun1(SEGData);     // Hiển thị thời gian còn lại của đèn đỏ
+				segRun2(LEDData);     // Hiển thị thời gian còn lại của đèn xanh
+				if (SEGData > 0) SEGData--;
+				if (LEDData > 0) LEDData--;
+				setTimer2(100);       // Đặt lại timer cho 7-segment hiển thị mỗi 1 giây
+			}
+			break;
+
+		case AUTORED_YELLOW:
+			HAL_GPIO_WritePin(RED_1_GPIO_Port, RED_1_Pin, 1);
+			HAL_GPIO_WritePin(GREEN_1_GPIO_Port, GREEN_1_Pin, 0);
+			HAL_GPIO_WritePin(YELLOW_1_GPIO_Port, YELLOW_1_Pin, 0);
+			HAL_GPIO_WritePin(RED_2_GPIO_Port, RED_2_Pin, 0);
+			HAL_GPIO_WritePin(GREEN_2_GPIO_Port, GREEN_2_Pin, 0);
+			HAL_GPIO_WritePin(YELLOW_2_GPIO_Port, YELLOW_2_Pin, 1);
+			if(timer1_flag == 1){
+				setTimer1(YELLOWTIME);
+				state = AUTOGREEN_RED;
+				SEGData = REDTIME / 100;
+				LEDData = YELLOWTIME / 100;
+			}
+			if(timer2_flag == 1){
+				segRun1(SEGData);
+				segRun2(LEDData);
+				if (SEGData > 0) SEGData--;
+				if (LEDData > 0) LEDData--;
+				setTimer2(100);
+			}
+			break;
+
+		case AUTOGREEN_RED:
+			HAL_GPIO_WritePin(RED_1_GPIO_Port, RED_1_Pin, 0);
+			HAL_GPIO_WritePin(GREEN_1_GPIO_Port, GREEN_1_Pin, 1);
+			HAL_GPIO_WritePin(YELLOW_1_GPIO_Port, YELLOW_1_Pin, 0);
+			HAL_GPIO_WritePin(RED_2_GPIO_Port, RED_2_Pin, 1);
+			HAL_GPIO_WritePin(GREEN_2_GPIO_Port, GREEN_2_Pin, 0);
+			HAL_GPIO_WritePin(YELLOW_2_GPIO_Port, YELLOW_2_Pin, 0);
+			if(timer1_flag == 1){
+				setTimer1(GREENTIME);
+				state = AUTOYELLOW_RED;
+				SEGData = GREENTIME / 100;
+				LEDData = REDTIME / 100;
+			}
+			if(timer2_flag == 1){
+				segRun1(SEGData);
+				segRun2(LEDData);
+				if (SEGData > 0) SEGData--;
+				if (LEDData > 0) LEDData--;
+				setTimer2(100);
+			}
+			break;
+
+		case AUTOYELLOW_RED:
+			HAL_GPIO_WritePin(RED_1_GPIO_Port, RED_1_Pin, 0);
+			HAL_GPIO_WritePin(GREEN_1_GPIO_Port, GREEN_1_Pin, 0);
+			HAL_GPIO_WritePin(YELLOW_1_GPIO_Port, YELLOW_1_Pin, 1);
+			HAL_GPIO_WritePin(RED_2_GPIO_Port, RED_2_Pin, 1);
+			HAL_GPIO_WritePin(GREEN_2_GPIO_Port, GREEN_2_Pin, 0);
+			HAL_GPIO_WritePin(YELLOW_2_GPIO_Port, YELLOW_2_Pin, 0);
+			if(timer1_flag == 1){
+				setTimer1(YELLOWTIME);
+				state = AUTORED_GREEN;
+				SEGData = YELLOWTIME / 100;
+				LEDData = REDTIME / 100;
+			}
+			if(timer2_flag == 1){
+				segRun1(SEGData);
+				segRun2(LEDData);
+				if (SEGData > 0) SEGData--;
+				if (LEDData > 0) LEDData--;
+				setTimer2(100);
+			}
+			break;
+	}
+}
+
+void fsm_fullmode(){
+	switch(MODE){
+	case MODE1:
+		fsm_trafficlight();
+		break;
+	case MODE2:
+
+		break;
+	case MODE3:
+
+		break;
+	case MODE4:
+
+		break;
+	}
+}

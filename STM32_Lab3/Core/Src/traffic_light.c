@@ -8,14 +8,15 @@
 
 #include "traffic_light.h"
 
-
 int state = INIT;  // Định nghĩa và khởi tạo giá trị cho state
 int stage = MODE;
 int GREENTIME = 300;
 int YELLOWTIME = 200;
 int REDTIME = 500;
+int SEGData = 0;
+int LEDData = 0;
+int SEGtimer=0;
 
-// Định nghĩa hàm fsm_trafficlight
 void fsm_trafficlight() {
 	switch (state) {
 		case INIT:
@@ -28,10 +29,11 @@ void fsm_trafficlight() {
 			if(timer1_flag == 1){
 				setTimer1(100);
 				state = AUTORED_GREEN;
+				SEGData = REDTIME / 100;
+				LEDData = GREENTIME / 100;
+				setTimer2(100);
 			}
-
 			break;
-
 		case AUTORED_GREEN:
 			HAL_GPIO_WritePin(RED_1_GPIO_Port, RED_1_Pin, 1);
 			HAL_GPIO_WritePin(GREEN_1_GPIO_Port, GREEN_1_Pin, 0);
@@ -42,6 +44,28 @@ void fsm_trafficlight() {
 			if(timer1_flag == 1){
 				setTimer1(GREENTIME);
 				state = AUTORED_YELLOW;
+				SEGData = REDTIME / 100;
+				LEDData = YELLOWTIME / 100;
+			}
+			if(timer2_flag == 1){
+				if (SEGData > 0) SEGData--;
+				if (LEDData > 0) LEDData--;
+				setTimer2(100);
+			}
+			if(timer3_flag==1){
+				switch(SEGtimer){
+				case 0:
+					segRun1();
+					SEGtimer=1;
+					break;
+				case 1:
+					segRun2();
+					SEGtimer=0;
+					break;
+				default:
+					break;
+				}
+				setTimer3(50);
 			}
 			break;
 
@@ -55,6 +79,28 @@ void fsm_trafficlight() {
 			if(timer1_flag == 1){
 				setTimer1(YELLOWTIME);
 				state = AUTOGREEN_RED;
+				SEGData = REDTIME / 100;
+				LEDData = YELLOWTIME / 100;
+			}
+			if(timer2_flag == 1){
+				if (SEGData > 0) SEGData--;
+				if (LEDData > 0) LEDData--;
+				setTimer2(100);
+			}
+			if(timer3_flag==1){
+				switch(SEGtimer){
+				case 0:
+					segRun1();
+					SEGtimer=1;
+					break;
+				case 1:
+					segRun2();
+					SEGtimer=0;
+					break;
+				default:
+					break;
+				}
+				setTimer3(50);
 			}
 			break;
 
@@ -68,6 +114,28 @@ void fsm_trafficlight() {
 			if(timer1_flag == 1){
 				setTimer1(GREENTIME);
 				state = AUTOYELLOW_RED;
+				SEGData = GREENTIME / 100;
+				LEDData = REDTIME / 100;
+			}
+			if(timer2_flag == 1){
+				if (SEGData > 0) SEGData--;
+				if (LEDData > 0) LEDData--;
+				setTimer2(100);
+			}
+			if(timer3_flag==1){
+				switch(SEGtimer){
+				case 0:
+					segRun1();
+					SEGtimer=1;
+					break;
+				case 1:
+					segRun2();
+					SEGtimer=0;
+					break;
+				default:
+					break;
+				}
+				setTimer3(50);
 			}
 			break;
 
@@ -81,10 +149,33 @@ void fsm_trafficlight() {
 			if(timer1_flag == 1){
 				setTimer1(YELLOWTIME);
 				state = AUTORED_GREEN;
+				SEGData = YELLOWTIME / 100;
+				LEDData = REDTIME / 100;
+			}
+			if(timer2_flag == 1){
+				if (SEGData > 0) SEGData--;
+				if (LEDData > 0) LEDData--;
+				setTimer2(100);
+			}
+			if(timer3_flag==1){
+				switch(SEGtimer){
+				case 0:
+					segRun1();
+					SEGtimer=1;
+					break;
+				case 1:
+					segRun2();
+					SEGtimer=0;
+					break;
+				default:
+					break;
+				}
+				setTimer3(50);
 			}
 			break;
 	}
 }
+
 void fsm_fullmode(){
 	switch(MODE){
 	case MODE1:

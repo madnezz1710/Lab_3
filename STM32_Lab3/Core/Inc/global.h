@@ -12,7 +12,7 @@
 #include "led7_segment.h"
 #include "software_timer.h"
 #include "button.h"
-
+#include "traffic_light.h"
 
 
 #define BUTTON_IS_RELEASED	SET
