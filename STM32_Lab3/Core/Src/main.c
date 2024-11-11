@@ -99,13 +99,7 @@ setTimer2(10);
 setTimer3(10);
   while (1)
   {
-//	  SEGData=3;
-//	  LEDData=4;
-//	  segRun1();
-//	  HAL_Delay(1000);
-//	  segRun2();
-//	  HAL_Delay(1000);
-		  fsm_trafficlight();
+		fsm_trafficlight();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
