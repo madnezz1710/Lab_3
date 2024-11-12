@@ -11,6 +11,7 @@
 extern int timer1_flag;
 extern int timer2_flag;
 extern int timer3_flag;
+extern int timer4_flag;
 
 
 void timer1Run();
@@ -19,5 +20,7 @@ void timer2Run();
 void setTimer2(int duration);
 void timer3Run();
 void setTimer3(int duration);
+void timer4Run();
+void setTimer4(int duration);
 
 #endif /* INC_SOFTWARE_TIMER_H_ */

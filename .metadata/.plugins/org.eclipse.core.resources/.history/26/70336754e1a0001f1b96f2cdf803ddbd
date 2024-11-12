@@ -1,0 +1,72 @@
+/*
+ * fsm_manual.c
+ *
+ *  Created on: Nov 12, 2024
+ *      Author: itzic
+ */
+#include "fsm_manual.h"
+int temp_red=REDTIME;
+int temp_green=GREENTIME;
+int temp_yellow=YELLOWTIME;
+void fsm_manual(){
+	switch (state){
+	case MANUAL_RED:
+		displaylight(1, 0, 0, 1, 0, 0);
+		if(timer1_flag==1){
+			state=AUTORED_GREEN;
+			setTimer1(GREENTIME);
+			remaintime1=REDTIME/100;
+			remaintime2=GREENTIME/100;
+			SEGData = remaintime1;
+			LEDData = remaintime2;
+		}
+		if(isButtonPressed(0)==1){
+			state = MANUAL_GREEN;
+			setTimer1(500);
+		}
+		if(isButtonPressed(1)==1){
+			REDTIME++;
+		}
+		break;
+	case MANUAL_GREEN:
+		displaylight(0, 1, 0, 0, 1, 0);
+		if(timer1_flag==1){
+			state=AUTORED_GREEN;
+			setTimer1(GREENTIME);
+			remaintime1=REDTIME/100;
+			remaintime2=GREENTIME/100;
+			SEGData = remaintime1;
+			LEDData = remaintime2;
+		}
+		if(isButtonPressed(0)==1){
+			state = MANUAL_YELLOW;
+			setTimer1(500);
+		}
+		break;
+	case MANUAL_YELLOW:
+		displaylight(0, 0, 1, 0, 0, 1);
+		if(timer1_flag==1){
+			state=AUTORED_GREEN;
+			setTimer1(GREENTIME);
+			remaintime1=REDTIME/100;
+			remaintime2=GREENTIME/100;
+			SEGData = remaintime1;
+			LEDData = remaintime2;
+		}
+		if(isButtonPressed(0)==1){
+			state = AUTORED_GREEN;
+			setTimer1(GREENTIME);
+			remaintime1=REDTIME/100;
+			remaintime2=GREENTIME/100;
+			SEGData = remaintime1;
+			LEDData = remaintime2;
+		}
+		break;
+	default:
+		break;
+	}
+
+
+}
+
+

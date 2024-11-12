@@ -1,0 +1,23 @@
+/*
+ * fsm_manual.c
+ *
+ *  Created on: Nov 12, 2024
+ *      Author: itzic
+ */
+#include "fsm_manual.h"
+
+void fsm_manual(){
+	switch (state){
+	case MANUAL_RED:
+
+		break;
+	case MANUAL_GREEN:
+		break;
+	case MANUAL_YELLOW:
+		break;
+	}
+
+
+}
+
+

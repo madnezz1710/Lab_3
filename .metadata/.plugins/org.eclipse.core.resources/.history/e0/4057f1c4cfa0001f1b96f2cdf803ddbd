@@ -1,0 +1,33 @@
+/*
+ * fsm_manual.c
+ *
+ *  Created on: Nov 12, 2024
+ *      Author: itzic
+ */
+#include "fsm_manual.h"
+
+void fsm_manual(){
+	switch (state){
+	case MANUAL_RED:
+		displaylight(1, 0, 0, 1, 0, 0);
+		if(timer1_flag==1){
+			state=AUTO_RED;
+			setTimer1(500);
+		}
+		if(isButtonPressed(1)==1){
+			state = MANUAL_GREEN;
+			setTimer1(1000);
+		}
+		break;
+	case MANUAL_GREEN:
+		break;
+	case MANUAL_YELLOW:
+		break;
+	default:
+		break;
+	}
+
+
+}
+
+

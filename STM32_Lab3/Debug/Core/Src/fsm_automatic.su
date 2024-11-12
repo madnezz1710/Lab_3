@@ -1,1 +1,2 @@
-fsm_automatic.c:11:6:automatic_traffic_light	4	static
+fsm_automatic.c:20:6:updateRemainingTime	8	static
+fsm_automatic.c:48:6:fsm_automatic	16	static
