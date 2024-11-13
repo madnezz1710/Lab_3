@@ -94,6 +94,7 @@ void fsm_manual(){
         if (temp_yellow == 0) {
             temp_yellow = YELLOWTIME / 100;
         }
+
 		displaylight(0, 0, 1, 0, 0, 1);
 		if(timer1_flag==1){
 			state=AUTORED_GREEN;

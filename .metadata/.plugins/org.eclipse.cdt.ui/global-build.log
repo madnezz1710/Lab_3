@@ -4614,3 +4614,122 @@ Finished building: STM32_Lab3.bin
  
 Finished building: STM32_Lab3.list
  
+13:12:39 **** Build of configuration Debug for project STM32_Lab3 ****
+make -j16 all 
+arm-none-eabi-size   STM32_Lab3.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     84	   1732	  13740	   35ac	STM32_Lab3.elf
+Finished building: default.size.stdout
+ 
+13:14:31 **** Incremental Build of configuration Debug for project STM32_Lab3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/fsm_automatic.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_automatic.d" -MT"Core/Src/fsm_automatic.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_automatic.o"
+arm-none-eabi-gcc -o "STM32_Lab3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\itzic\Desktop\baitapxaml\VXL\Git_Lab3\STM32_Lab3\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_Lab3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_Lab3.elf
+ 
+arm-none-eabi-size   STM32_Lab3.elf 
+arm-none-eabi-objdump -h -S  STM32_Lab3.elf  > "STM32_Lab3.list"
+arm-none-eabi-objcopy  -O ihex  STM32_Lab3.elf  "STM32_Lab3.hex"
+   text	   data	    bss	    dec	    hex	filename
+  11928	     84	   1732	  13744	   35b0	STM32_Lab3.elf
+arm-none-eabi-objcopy  -O binary  STM32_Lab3.elf  "STM32_Lab3.bin"
+Finished building: default.size.stdout
+ 
+Finished building: STM32_Lab3.hex
+Finished building: STM32_Lab3.bin
+ 
+ 
+Finished building: STM32_Lab3.list
+ 
+13:21:28 **** Incremental Build of configuration Debug for project STM32_Lab3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "STM32_Lab3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\itzic\Desktop\baitapxaml\VXL\Git_Lab3\STM32_Lab3\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_Lab3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_Lab3.elf
+ 
+arm-none-eabi-size   STM32_Lab3.elf 
+arm-none-eabi-objdump -h -S  STM32_Lab3.elf  > "STM32_Lab3.list"
+arm-none-eabi-objcopy  -O ihex  STM32_Lab3.elf  "STM32_Lab3.hex"
+arm-none-eabi-objcopy  -O binary  STM32_Lab3.elf  "STM32_Lab3.bin"
+   text	   data	    bss	    dec	    hex	filename
+  11928	     84	   1732	  13744	   35b0	STM32_Lab3.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_Lab3.hex
+Finished building: STM32_Lab3.bin
+ 
+ 
+Finished building: STM32_Lab3.list
+ 
+13:27:28 **** Incremental Build of configuration Debug for project STM32_Lab3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/fsm_manual.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_manual.d" -MT"Core/Src/fsm_manual.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_manual.o"
+arm-none-eabi-gcc -o "STM32_Lab3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\itzic\Desktop\baitapxaml\VXL\Git_Lab3\STM32_Lab3\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_Lab3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_Lab3.elf
+ 
+arm-none-eabi-size   STM32_Lab3.elf 
+arm-none-eabi-objdump -h -S  STM32_Lab3.elf  > "STM32_Lab3.list"
+arm-none-eabi-objcopy  -O ihex  STM32_Lab3.elf  "STM32_Lab3.hex"
+arm-none-eabi-objcopy  -O binary  STM32_Lab3.elf  "STM32_Lab3.bin"
+   text	   data	    bss	    dec	    hex	filename
+  11928	     84	   1732	  13744	   35b0	STM32_Lab3.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_Lab3.hex
+Finished building: STM32_Lab3.bin
+ 
+ 
+Finished building: STM32_Lab3.list
+ 
+13:28:41 **** Incremental Build of configuration Debug for project STM32_Lab3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/button.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/button.d" -MT"Core/Src/button.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/button.o"
+arm-none-eabi-gcc -o "STM32_Lab3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\itzic\Desktop\baitapxaml\VXL\Git_Lab3\STM32_Lab3\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_Lab3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_Lab3.elf
+ 
+arm-none-eabi-size   STM32_Lab3.elf 
+arm-none-eabi-objdump -h -S  STM32_Lab3.elf  > "STM32_Lab3.list"
+arm-none-eabi-objcopy  -O ihex  STM32_Lab3.elf  "STM32_Lab3.hex"
+arm-none-eabi-objcopy  -O binary  STM32_Lab3.elf  "STM32_Lab3.bin"
+   text	   data	    bss	    dec	    hex	filename
+  11928	     84	   1732	  13744	   35b0	STM32_Lab3.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_Lab3.hex
+Finished building: STM32_Lab3.bin
+ 
+ 
+Finished building: STM32_Lab3.list
+ 
+13:35:01 **** Incremental Build of configuration Debug for project STM32_Lab3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/button.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/button.d" -MT"Core/Src/button.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/button.o"
+arm-none-eabi-gcc "../Core/Src/fsm_automatic.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_automatic.d" -MT"Core/Src/fsm_automatic.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_automatic.o"
+arm-none-eabi-gcc "../Core/Src/fsm_manual.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_manual.d" -MT"Core/Src/fsm_manual.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_manual.o"
+arm-none-eabi-gcc "../Core/Src/led7_segment.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/led7_segment.d" -MT"Core/Src/led7_segment.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/led7_segment.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/traffic_light.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/traffic_light.d" -MT"Core/Src/traffic_light.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/traffic_light.o"
+arm-none-eabi-gcc -o "STM32_Lab3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\itzic\Desktop\baitapxaml\VXL\Git_Lab3\STM32_Lab3\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_Lab3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_Lab3.elf
+ 
+arm-none-eabi-size   STM32_Lab3.elf 
+arm-none-eabi-objdump -h -S  STM32_Lab3.elf  > "STM32_Lab3.list"
+arm-none-eabi-objcopy  -O ihex  STM32_Lab3.elf  "STM32_Lab3.hex"
+arm-none-eabi-objcopy  -O binary  STM32_Lab3.elf  "STM32_Lab3.bin"
+   text	   data	    bss	    dec	    hex	filename
+  11928	     84	   1732	  13744	   35b0	STM32_Lab3.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_Lab3.hex
+Finished building: STM32_Lab3.bin
+ 
+ 
+Finished building: STM32_Lab3.list
+ 
+14:02:05 **** Incremental Build of configuration Debug for project STM32_Lab3 ****
+make -j16 all 
+arm-none-eabi-size   STM32_Lab3.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11928	     84	   1732	  13744	   35b0	STM32_Lab3.elf
+Finished building: default.size.stdout
+ 

@@ -13,7 +13,7 @@
 #define NUM_OF_BUTTONS 3
 
 extern int button_flag[NUM_OF_BUTTONS];
-void clearAllButtons();
+
 void getKeyInput();
 void subKeyProcess(int index);
 int isButtonPressed(int index);

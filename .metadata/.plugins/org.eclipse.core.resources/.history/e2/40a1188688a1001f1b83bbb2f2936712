@@ -60,7 +60,7 @@ void getKeyInput() {
 				&& (debounceButtonBuffer2[i] == buttonBuffer[i])) {
 			if (buttonBuffer[i] != longPressButtonBuffer[i]) {
 				longPressButtonBuffer[i] = buttonBuffer[i];
-
+				//when pressed, do subKeyProcess()
 				if (buttonBuffer[i] == BUTTON_IS_PRESSED) {
 					TimeOutForKeyPress[i] = TIME_OUT_FOR_KEY_PRESS;
 					subKeyProcess(i);
@@ -70,6 +70,8 @@ void getKeyInput() {
 				TimeOutForKeyPress[i]--;
 				if (TimeOutForKeyPress[i] == 0) {
 					if(buttonBuffer[i]==BUTTON_IS_PRESSED)
+//					subKeyProcess(i);
+//					TimeOutForKeyPress[i] = TIME_OUT_FOR_KEY_PRESS;
 					longPressButtonBuffer[i] = BUTTON_IS_RELEASED;
 				}
 			}
